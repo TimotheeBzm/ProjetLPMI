@@ -7,7 +7,7 @@ COLLATE utf8mb4_general_ci;
 USE BDD_GP2;
 
 CREATE TABLE categorie (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cat INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL
 );
 INSERT INTO categorie (nom) VALUES
@@ -15,15 +15,15 @@ INSERT INTO categorie (nom) VALUES
 ('CD'),
 ('Livre');
 
-CREATE TABLE produit (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100) NOT NULL,
+CREATE TABLE produits (
+    id_prod INT AUTO_INCREMENT PRIMARY KEY,
+    nom_prod VARCHAR(100) NOT NULL,
     description TEXT,
     prix DECIMAL(10,2) NOT NULL,
     idcat INT NOT NULL,
 	foreign key (idcat) references id(categorie)
 );
-INSERT INTO produit (nom, description, prix, idcat) VALUES
+INSERT INTO produits (nom_prod, description, prix, idcat) VALUES
 -- DVD
 ('Inception', 'Film de science-fiction', 14.99, 1),
 ('Interstellar', 'Voyage spatial et émotion', 16.99, 1),
@@ -44,3 +44,10 @@ INSERT INTO produit (nom, description, prix, idcat) VALUES
 ('Harry Potter à l\'école des sorciers', 'Fantasy jeunesse', 8.99, 3),
 ('L\'Étranger', 'Roman philosophique', 7.99, 3),
 ('Dune', 'Science-fiction', 12.99, 3);
+create table Menu(
+id_menu int primary key auto_increment,
+lien varchar(400),
+filtre varchar(500),
+label varchar(500)
+);
+insert into Menu(lien , filtre ,label ) Values('liste_produits_c.php','','Tous les produits');
